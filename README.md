@@ -6,7 +6,15 @@ Welcome to my collection of projects developed during the **kood/Jõhvi kood/Noo
 
 *(Projects are listed in reverse chronological order, starting with the most recent)*
 
-### 1. [Wordle Game](./koodWordle/) 🟩🟨⬜
+### 1. [Green Day Bank (WIP)](./bankingApp/) 🏦
+
+*A magical command-line banking system where investments only go up.*
+
+- **Key Features**: Session management, `BigDecimal` precision, Interest logic, Investment Funds.
+- **Tech Stack**: Java, OOP, Custom Exceptions.
+- **Why it stands out**: Simulates complex "stateful" financial logic and session persistence in a CLI environment.
+
+### 2. [Wordle Game](./koodWordle/) 🟩🟨⬜
 
 *A robust command-line implementation of the popular word guessing game.*
 
@@ -14,7 +22,7 @@ Welcome to my collection of projects developed during the **kood/Jõhvi kood/Noo
 - **Tech Stack**: Java (OOP), Streams API (Lazy Loading), Custom Argument Parsing, CSV Persistence.
 - **Why it stands out**: Handles complex string algorithms, uses memory-efficient file streaming, and delivers a rich visual experience in the terminal.
 
-### 2. [Telemetry Service ./WeatherStation](./telemetry-service/) 📡
+### 3. [Telemetry Service ./WeatherStation](./telemetry-service/) 📡
 
 *A high-performance backend component for normalizing critical infrastructure telemetry.*
 
@@ -22,7 +30,7 @@ Welcome to my collection of projects developed during the **kood/Jõhvi kood/Noo
 - **Tech Stack**: Java (Pure Logic), Systems Engineering, Data Optimization.
 - **Why it stands out**: Solves a complex "bandwidth constraint" problem without libraries, demonstrating ability to write efficient, low-level system code.
 
-### 3. [Notes CLI Tool](./notesApp/) 📝
+### 4. [Notes CLI Tool](./notesApp/) 📝
 
 *An efficient tool for managing personal notes and lists from the command line.*
 
@@ -30,7 +38,7 @@ Welcome to my collection of projects developed during the **kood/Jõhvi kood/Noo
 - **Tech Stack**: Java NIO, Clean Architecture (separation of CLI/Logic/DB), File-based Database, Environment-aware Pathing.
 - **Why it stands out**: Demonstrates solid understanding of CRUD operations, file I/O, and data integrity (handling deleted files mid-operation).
 
-### 4. [Cypher Tool](./cypher/) 🔐
+### 5. [Cypher Tool](./cypher/) 🔐
 
 *A cryptographic utility for encrypting and decrypting messages.*
 
