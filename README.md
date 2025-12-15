@@ -22,7 +22,7 @@ Welcome to my collection of projects developed during the **kood/Jõhvi kood/Noo
 - **Tech Stack**: Java (OOP), Streams API (Lazy Loading), Custom Argument Parsing, CSV Persistence.
 - **Why it stands out**: Handles complex string algorithms, uses memory-efficient file streaming, and delivers a rich visual experience in the terminal.
 
-### 3. [Telemetry Service ./WeatherStation](./telemetry-service/) 📡
+### 3. [Telemetry Service](./telemetry-service/) 📡
 
 *A high-performance backend component for normalizing critical infrastructure telemetry.*
 
