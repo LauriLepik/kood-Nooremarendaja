@@ -1,10 +1,10 @@
-# Java Notes CLI Tool
+# Java Notes CLI Tool 📝
 
 A robust, interactive command-line interface (CLI) application designed for efficient note management. This tool allows users to create, view, organize, and persistent text-based notes across multiple collections.
 
 This project focuses on clean architecture, file persistence, and user-centric CLI design.
 
-## Features
+## Features ✨
 
 - **Collection Management**: Create and switch between multiple named collections (e.g., `packing_list`, `ideas`, `shopping`).
 - **Persistent Storage**: Collections are automatically saved as `.txt` files in a `collections/` directory, ensuring data survives between runs.
@@ -14,7 +14,7 @@ This project focuses on clean architecture, file persistence, and user-centric C
   - **Delete**: Remove completed or irrelevant items.
 - **Robust Error Handling**: Gracefully handles invalid inputs and file operations without crashing.
 
-## Bonus Features
+## Bonus Features 🎁
 
 Beyond the standard requirements, this application includes several advanced capabilities:
 
@@ -22,7 +22,7 @@ Beyond the standard requirements, this application includes several advanced cap
 - **Advanced Reordering**: Support for both **swapping** notes and **moving** them to specific positions.
 - **Dynamic Collection Switching**: Create new collections or switch between existing ones directly during runtime without restarting the application.
 
-## Technical Highlights
+## Technical Highlights 💡
 
 This project was built to demonstrate proficiency in Java and CLI development features:
 
@@ -34,7 +34,7 @@ This project was built to demonstrate proficiency in Java and CLI development fe
   - `Database.java` manages low-level file storage and retrieval using `java.nio`.
 - **Modern I/O**: Utilizes Java's NIO (Non-blocking I/O) package (`Files`, `Paths`) for efficient file handling, preferring it over legacy `java.io` classes.
 
-## What We Learned
+## What I Learned 🧠
 
 Working on this project reinforced key software engineering concepts:
 
@@ -42,7 +42,7 @@ Working on this project reinforced key software engineering concepts:
 - **User Experience (UX) in CLI**: designing a clear, navigable menu system that guides the user and prevents invalid states.
 - **Collaborative Development**: Coordinating contributions and code style across a 3-person team efficiently.
 
-## Potential Future Improvements
+## Potential Future Improvements 🔮
 
 Potential features that could be implemented on top of existing functionality:
 
@@ -50,12 +50,12 @@ Potential features that could be implemented on top of existing functionality:
 - **Task completion**: Mark notes as "done" (e.g., `[x]`) without deleting them.
 - **Export**: Save collections to other formats like JSON or Markdown.
 
-## Prerequisites
+## Prerequisites ⚙️
 
 - **Java JDK 17** or higher.
 - A terminal or command prompt.
 
-## Installation
+## Installation 📥
 
 1. **Clone the repository**:
 
@@ -70,7 +70,7 @@ Potential features that could be implemented on top of existing functionality:
    javac -d out ./src/*.java
    ```
 
-## Usage
+## Usage 🚀
 
 The application requires exactly one argument: the name of the collection you want to manage.
 
@@ -80,7 +80,7 @@ The application requires exactly one argument: the name of the collection you wa
 java -cp out Main [COLLECTION]
 ```
 
-### Examples
+### Examples 📌
 
 **1. Manage your packing list:**
 
@@ -114,7 +114,7 @@ Options:
 [COLLECTION]     The name of the collection to manage
 ```
 
-## Project Structure
+## Project Structure 📂
 
 The codebase is organized into logical components:
 
@@ -129,12 +129,12 @@ notesApp/
 └── README.md
 ```
 
-## Data Management
+## Data Management 💾
 
 - **Collections**: Each collection is stored as a separate `.txt` file in the `collections/` folder.
 - **Persistence**: Changes are saved immediately to disk. You can modify files externally, and the tool will read the updates on next load.
 
-## Contributors
+## Contributors 👥
 
 This was a group project developed by:
 

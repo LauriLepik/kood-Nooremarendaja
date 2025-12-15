@@ -6,7 +6,7 @@ Welcome to my collection of projects developed during the **kood/Jõhvi kood/Noo
 
 *(Projects are listed in reverse chronological order, starting with the most recent)*
 
-### 1. [Wordle Game](./koodWordle/) �🟨⬜
+### 1. [Wordle Game](./koodWordle/) 🟩🟨⬜
 
 *A robust command-line implementation of the popular word guessing game.*
 
@@ -47,12 +47,13 @@ Welcome to my collection of projects developed during the **kood/Jõhvi kood/Noo
   - File I/O & Persistence (Java NIO)
   - Defensive Programming & Error Handling
 - **Tools**: Git, Bash, VS Code
+- *Solved **65+ algorithmic challenges** during the **Java Sprint** (including platform-based tasks and these repository exercises) ranging from basic logic to complex recursion; highlights included in [`./algorithm-challenges`](./algorithm-challenges/).*
 
 ## 🎓 About the Curriculum
 
 These projects were developed as part of **[kood/Nooremarendaja](https://kood.tech/kood-nooremarendaja/)**, a **free, EU-funded, 5-month intensive coding program** provided by **kood/Jõhvi**.
 
-### About kood/Jõhvi
+### About kood/Jõhvi 🏫
 
 **kood/Jõhvi** is a novel coding school in Estonia that operates on a radical **"no teachers, no classes"** philosophy. Based on the international **01 Edu System**, the methodology emphasizes:
 
@@ -60,7 +61,7 @@ These projects were developed as part of **[kood/Nooremarendaja](https://kood.te
 - **Peer-to-Peer Collaboration**: All learning happens through group work, code reviews, and solving complex problems together (mimicking real-world engineering teams).
 - **Practical Focus**: The curriculum is 100% hands-on coding, designed to build industry-ready skills in a short timeframe.
 
-### The [kood/Nooremarendaja](https://kood.tech/kood-nooremarendaja/) Program
+### The [kood/Nooremarendaja](https://kood.tech/kood-nooremarendaja/) Program 🎓
 
 This **5-month intensive program** (funded by **[NextGenerationEU](https://kood.tech/meist/toetused/)**) is designed to rapidly upskill participants for Junior Developer roles. The curriculum is structured into four distinct modules:
 

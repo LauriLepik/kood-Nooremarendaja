@@ -1,10 +1,10 @@
-# Java Cypher Tool
+# Java Cypher Tool 🔐
 
 A diverse command-line cryptography utility capable of encrypting and decrypting messages using classic substitution ciphers. This tool features a robust interactive loop and modular implementation of three distinct algorithms.
 
-## Features
+## Key Features ✨
 
-- **Multiple Algorithms**:
+- **Supported Algorithms 🧩**:
   - **ROT13**: A specific case of the Caesar cipher (shift by 13).
   - **Atbash**: Maps 'A' to 'Z', 'B' to 'Y', etc.
   - **Affine (Custom)**: Uses linear math functions for stronger obfuscation.
@@ -12,22 +12,22 @@ A diverse command-line cryptography utility capable of encrypting and decrypting
 - **Input Validation**: Robust handling to ensure only valid operations and non-empty messages are processed.
 - **Feedback System**: Alerts users when characters (like numbers or symbols) cannot be processed by specific ciphers.
 
-## Algorithms Explained
+## Algorithms Explained 📖
 
-### 1. ROT13
+### 1. ROT13 🔄
 
 A simple substitution cipher that replaces a letter with the 13th letter after it in the alphabet.
 
 - **Encryption**: $x + 13 \pmod{26}$
 - **Decryption**: Same as encryption (symmetric).
 
-### 2. Atbash
+### 2. Atbash 🔁
 
 A monoalphabetic substitution cipher originally used to encode the Hebrew alphabet.
 
 - **Logic**: Reverses the alphabet (A ↔ Z).
 
-### 3. Affine Cipher (The "Custom" Choice)
+### 3. Affine Cipher (The "Custom" Choice) 📐
 
 A more complex monoalphabetic substitution cipher using linear algebra.
 
@@ -36,7 +36,7 @@ A more complex monoalphabetic substitution cipher using linear algebra.
 - **Decryption Function**: $D(x) = a^{-1}(x - b) \pmod{26}$
   - *Note*: Accurately calculates the modular multiplicative inverse ($21$ for $a=5$).
 
-## Usage
+## Usage 🚀
 
 Compile and run the tool from the command line:
 
@@ -66,19 +66,19 @@ $> hello
 Encrypted message: rcllkt
 ```
 
-## Technical Highlights
+## Technical Highlights 💡
 
 - **Mathematical Correctness**: The Affine decryption logic handles Java's modulo operator quirks (which can return negative numbers) by ensuring positive results: `if (decryptedFn < 0) decryptedFn += 26;`.
-- **Object-Oriented Data Transfer**: Uses an `InputData` class to cleanly encapsulate user inputs (Operation, Cypher, Message) and pass them between the UI and logic layers.
+- **Object-Oriented Data Transfer**: Uses an `InputData` class to cleanly encapsulate user inputs (Operation, Cypher, Message) and pass them between UI and logic layers.
 - **Code Reuse**: Efficiently implements symmetric algorithms (ROT13, Atbash) by reusing the encryption method for decryption.
 
-## What I Learned
+## What I Learned 🧠
 
 - **Modular Arithmetic**: Implementing the Affine cipher required a deep dive into modular inverses and linear equations.
 - **Input Validation Loops**: Building `while(true)` loops to trap invalid user input until correct data is received.
 - **Clean Code**: Separating the "Input Gathering" logic (`getInput`) from the "Business Logic" (`main` control flow).
 
-## Project Structure
+## Project Structure 📂
 
 ```text
 cypher/
@@ -87,7 +87,7 @@ cypher/
 └── Main.java          # Entry point wrapper
 ```
 
-## Contributors
+## Contributors 👥
 
 This was a group project developed by:
 
