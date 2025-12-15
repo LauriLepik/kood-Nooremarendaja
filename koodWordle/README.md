@@ -130,7 +130,7 @@ This project showcases several advanced Java implementation details:
 Building this game utilized several core programming concepts:
 
 - **Object-Oriented Design**: Structuring a complex game into interacting objects (`GameEngine`, `UserStats`, `WordleDB`).
-- **Stream API**: Leveraging Java Streams for efficient word list filtering and processing.
+- **Stream API & Memory Efficiency**: `WordleDB.java` uses `Files.lines()` to process the word list lazily. This means the game can handle huge dictionary files without loading the entire file into memory, demonstrating efficient resource management.
 - **File I/O**: Using `java.nio` for robust file reading and writing.
 - **Algorithm Design**: implementing the logic to correctly color-code guesses (handling duplicate letters correctly is trickier than it looks!).
 
@@ -141,4 +141,4 @@ Building this game utilized several core programming concepts:
 - **Global Leaderboard**: A server-side component to track high scores across different players.
 
 ---
-*Developed as a solo project for the kood/Jõhvi kood/Nooremarendaja Junior Developer coding curriculum.*
+*Developed as a solo project for the **[kood/Nooremarendaja](https://kood.tech/kood-nooremarendaja/)** curriculum (Free, **[NextGenEU](https://kood.tech/meist/toetused/)** funded, 5-month intensive).*

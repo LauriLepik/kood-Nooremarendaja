@@ -27,6 +27,7 @@ Beyond the standard requirements, this application includes several advanced cap
 This project was built to demonstrate proficiency in Java and CLI development features:
 
 - **Defensive Programming**: The application gracefully handles edge cases, such as a collection file being deleted externally while the program is running. The `CLI.java` includes specific logic (`handleMissingCollection`) to detect this and offer recovery options (recreate or switch).
+- **Smart Path Resolution**: `Database.java` dynamically locates the `collections/` directory, allowing the app to run correctly whether executed from the project root or the `src` directory (great for testing!).
 - **Separation of Concerns**: The codebase follows update strict modularity:
   - `CLI.java` handles all user inputs and outputs.
   - `Operations.java` contains the business logic for manipulating notes.
@@ -137,9 +138,9 @@ notesApp/
 
 This was a group project developed by:
 
-- **Lauri Lepik**
+- **Lauri Lepik** (👑 Team Lead)
 - **Kaarel Leib**
 - **Martin Rahusoov**
 
 ---
-*Developed as a group project for the kood/Jõhvi kood/Nooremarendaja Junior Developer coding curriculum.*
+*Developed as a group project for the **[kood/Nooremarendaja](https://kood.tech/kood-nooremarendaja/)** curriculum (Free, **[NextGenEU](https://kood.tech/meist/toetused/)** funded, 5-month intensive).*
