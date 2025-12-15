@@ -14,7 +14,15 @@ Welcome to my collection of projects developed during the **kood/Jõhvi kood/Noo
 - **Tech Stack**: Java (OOP), Streams API (Lazy Loading), Custom Argument Parsing, CSV Persistence.
 - **Why it stands out**: Handles complex string algorithms, uses memory-efficient file streaming, and delivers a rich visual experience in the terminal.
 
-### 2. [Notes CLI Tool](./notesApp/) �
+### 2. [Telemetry Service ./WeatherStation](./telemetry-service/) 📡
+
+*A high-performance backend component for normalizing critical infrastructure telemetry.*
+
+- **Key Features**: HPACK-style state compression, **Null-safe precision handling**, and library-free CSV parsing.
+- **Tech Stack**: Java (Pure Logic), Systems Engineering, Data Optimization.
+- **Why it stands out**: Solves a complex "bandwidth constraint" problem without libraries, demonstrating ability to write efficient, low-level system code.
+
+### 3. [Notes CLI Tool](./notesApp/) 📝
 
 *An efficient tool for managing personal notes and lists from the command line.*
 
@@ -22,7 +30,7 @@ Welcome to my collection of projects developed during the **kood/Jõhvi kood/Noo
 - **Tech Stack**: Java NIO, Clean Architecture (separation of CLI/Logic/DB), File-based Database, Environment-aware Pathing.
 - **Why it stands out**: Demonstrates solid understanding of CRUD operations, file I/O, and data integrity (handling deleted files mid-operation).
 
-### 3. [Cypher Tool](./cypher/) 🔐
+### 4. [Cypher Tool](./cypher/) 🔐
 
 *A cryptographic utility for encrypting and decrypting messages.*
 
