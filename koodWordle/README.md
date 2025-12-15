@@ -39,7 +39,7 @@ This project demonstrates clean Object-Oriented compliant code, handling of stan
    The `wordle-words.txt` file is not included in the repository (gitignored).
    - Create a file named `wordle-words.txt` in the root directory.
    - Paste a list of words into it (one word per line).
-   - [Example Word List Source](https://github.com/tabatkins/wordle-list/blob/main/words)
+   - **[Example Word List Source](https://gist.github.com/dracos/dd0668f281e685bad51479e5acaadb93)** (Note: This list contains *only* 5-letter words).
 
 ## Usage
 
