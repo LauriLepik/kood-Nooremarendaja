@@ -1,0 +1,7 @@
+*.class
+build/
+out/
+node_modules/
+.env
+.vscode
+wordle-words.txt
