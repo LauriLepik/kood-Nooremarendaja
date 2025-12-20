@@ -6,13 +6,13 @@ Welcome to my collection of projects developed during the **kood/Jõhvi kood/Noo
 
 *(Projects are listed in reverse chronological order, starting with the most recent)*
 
-### 1. [Green Day Bank (WIP)](./bankingApp/) 🏦
+### 1. [Green Day Bank](./bankingApp/) 🏦
 
-*A magical command-line banking system where investments only go up.*
+*A feature-rich banking simulation where interest is guaranteed and time travels forward.*
 
-- **Key Features**: Session management, `BigDecimal` precision, Interest logic, Investment Funds.
-- **Tech Stack**: Java, OOP, Custom Exceptions.
-- **Why it stands out**: Simulates complex "stateful" financial logic and session persistence in a CLI environment.
+- **Key Features**: Time-Travel Simulation, Fraud Detection System (3-strike rule), "Smart Recipient" Transfers, and Fault-Tolerant CSV Persistence.
+- **Tech Stack**: Java, Custom Serialization, Affine Cipher Encryption, Business Logic Simulation.
+- **Why it stands out**: Goes beyond simple CRUD by implementing a "Time Engine" for interest compounding and a robust "Self-Healing" database layer that recovers from file corruption.
 
 ### 2. [Wordle Game](./koodWordle/) 🟩🟨⬜
 
