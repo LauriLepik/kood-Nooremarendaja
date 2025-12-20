@@ -203,9 +203,9 @@ The project rigorously applies core Object-Oriented principles:
 - 🗄️ **Database Integration**: Replacing CSV persistence with SQLite or PostgreSQL for better scalability.
 - 👑 **Backend Admin System**: Implementing a backend admin system to manage users and accounts, unfreeze accounts, etc.
 
-## Creator
+## Creator 👨‍💻
 
-**Lauri Lepik**
+**[Lauri Lepik](https://github.com/LauriLepik)**
 
 ---
 *Developed as a solo project for the **[kood/Nooremarendaja](https://kood.tech/kood-nooremarendaja/)** curriculum (Free, **[NextGenEU](https://kood.tech/meist/toetused/)** funded, 5-month intensive).*

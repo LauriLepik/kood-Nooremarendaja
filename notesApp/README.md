@@ -138,7 +138,7 @@ notesApp/
 
 This was a group project developed by:
 
-- **Lauri Lepik** (👑 Team Lead)
+- **[Lauri Lepik](https://github.com/LauriLepik)** (👑 Team Lead)
 - **Kaarel Leib**
 - **Martin Rahusoov**
 

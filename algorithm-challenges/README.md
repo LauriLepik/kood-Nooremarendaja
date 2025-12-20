@@ -83,5 +83,9 @@ System.out.println(comb.combN(3));
 // Output: ["012", "013", ... "789"]
 ```
 
+## Creator 👨‍💻
+
+**[Lauri Lepik](https://github.com/LauriLepik)**
+
 ---
 *Developed as part of the **Java Sprint** in the **[kood/Nooremarendaja](https://kood.tech/kood-nooremarendaja/)** curriculum (Free, **[NextGenEU](https://kood.tech/meist/toetused/)** funded, 5-month intensive).*

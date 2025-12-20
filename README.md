@@ -6,7 +6,21 @@ Welcome to my collection of projects developed during the **kood/Jõhvi kood/Noo
 
 *(Projects are listed in reverse chronological order, starting with the most recent)*
 
-### 1. [Green Day Bank](./bankingApp/) 🏦
+### 1. [KMDB - Movies API](./movies-api/) 🎬 (WIP)
+
+*A robust REST API for managing a movie database using **Spring Boot** and **JPA**.*
+
+- **Key Features**: RESTful endpoints, Complex Relationships (Many-to-Many), Search & Pagination.
+- **Status**: 🚧 Work In Progress (Skeleton Only)
+
+### 2. [Itinerary Prettifier](./itinerary-prettifier/) ✈️ (WIP)
+
+*A utility for cleaning up and formatting flight itineraries.*
+
+- **Key Features**: ISO Date/Time formatting, Airport Code cleanup (regex), File I/O.
+- **Status**: 🚧 Work In Progress (Skeleton Only)
+
+### 3. [Green Day Bank](./bankingApp/) 🏦
 
 *A feature-rich banking simulation where interest is guaranteed and time travels forward.*
 
@@ -14,7 +28,7 @@ Welcome to my collection of projects developed during the **kood/Jõhvi kood/Noo
 - **Tech Stack**: Java, Custom Serialization, Affine Cipher Encryption, Business Logic Simulation.
 - **Why it stands out**: Goes beyond simple CRUD by implementing a "Time Engine" for interest compounding and a robust "Self-Healing" database layer that recovers from file corruption.
 
-### 2. [Wordle Game](./koodWordle/) 🟩🟨⬜
+### 4. [Wordle Game](./koodWordle/) 🟩🟨⬜
 
 *A robust command-line implementation of the popular word guessing game.*
 
@@ -22,7 +36,7 @@ Welcome to my collection of projects developed during the **kood/Jõhvi kood/Noo
 - **Tech Stack**: Java (OOP), Streams API (Lazy Loading), Custom Argument Parsing, CSV Persistence.
 - **Why it stands out**: Handles complex string algorithms, uses memory-efficient file streaming, and delivers a rich visual experience in the terminal.
 
-### 3. [Telemetry Service](./telemetry-service/) 📡
+### 5. [Telemetry Service](./telemetry-service/) 📡
 
 *A high-performance backend component for normalizing critical infrastructure telemetry.*
 
@@ -30,7 +44,7 @@ Welcome to my collection of projects developed during the **kood/Jõhvi kood/Noo
 - **Tech Stack**: Java (Pure Logic), Systems Engineering, Data Optimization.
 - **Why it stands out**: Solves a complex "bandwidth constraint" problem without libraries, demonstrating ability to write efficient, low-level system code.
 
-### 4. [Notes CLI Tool](./notesApp/) 📝
+### 6. [Notes CLI Tool](./notesApp/) 📝
 
 *An efficient tool for managing personal notes and lists from the command line.*
 
@@ -38,7 +52,7 @@ Welcome to my collection of projects developed during the **kood/Jõhvi kood/Noo
 - **Tech Stack**: Java NIO, Clean Architecture (separation of CLI/Logic/DB), File-based Database, Environment-aware Pathing.
 - **Why it stands out**: Demonstrates solid understanding of CRUD operations, file I/O, and data integrity (handling deleted files mid-operation).
 
-### 5. [Cypher Tool](./cypher/) 🔐
+### 7. [Cypher Tool](./cypher/) 🔐
 
 *A cryptographic utility for encrypting and decrypting messages.*
 

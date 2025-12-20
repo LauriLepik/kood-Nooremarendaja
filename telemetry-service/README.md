@@ -66,5 +66,9 @@ System.out.println(station.getState());
 - **Null-Safe Precision Handling**: Uses Java's `Double` wrapper class to distinguish between `0.0` (a valid reading) and `null` (sensor offline), a critical distinction in telemetry.
 - **Efficient String Parsing**: Implements a manual CSV parser using `String.split` and `switch` statements, avoiding heavy external serialization libraries like Jackson or Gson.
 
+## Creator 👨‍💻
+
+**[Lauri Lepik](https://github.com/LauriLepik)**
+
 ---
 *Developed as an advanced algorithmic exercise for the **[kood/Nooremarendaja](https://kood.tech/kood-nooremarendaja/)** curriculum (Free, **[NextGenEU](https://kood.tech/meist/toetused/)** funded, 5-month intensive).*

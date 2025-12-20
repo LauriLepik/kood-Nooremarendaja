@@ -140,5 +140,9 @@ Building this game utilized several core programming concepts:
 - **GUI Version**: Porting the game logic to a JavaFX or Swing interface.
 - **Global Leaderboard**: A server-side component to track high scores across different players.
 
+## Creator 👨‍💻
+
+**[Lauri Lepik](https://github.com/LauriLepik)**
+
 ---
 *Developed as a solo project for the **[kood/Nooremarendaja](https://kood.tech/kood-nooremarendaja/)** curriculum (Free, **[NextGenEU](https://kood.tech/meist/toetused/)** funded, 5-month intensive).*
