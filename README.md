@@ -6,7 +6,7 @@ Welcome to my collection of projects developed during the **kood/Jõhvi kood/Noo
 
 *(Projects are listed in reverse chronological order, starting with the most recent)*
 
-### 1. [KMDB - Movies API](./movies-api/) 🎬 (WIP)
+### 1. [Movies API](./movies-api/) 🎬 (WIP)
 
 *A robust REST API for managing a movie database using **Spring Boot** and **JPA**.*
 
