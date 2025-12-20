@@ -41,7 +41,7 @@ public class Database {
         }
     }
 
-    //changed to public so can access in Main to check if database is empty ln 80
+    // Reads all lines from the database file.
     public static List<String> readDatabaseLines(String dbName) {
         try {
             return new ArrayList<>(Files.readAllLines(getDatabasePath(dbName)));

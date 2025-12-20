@@ -156,16 +156,16 @@ public class CypherTool {
     public static String encryptAtbash(String s) {
         if (s == null) return null;
 
-        StringBuilder encrypted = new StringBuilder(); //ehitab uue lause
+        StringBuilder encrypted = new StringBuilder(); // Construct the new string
 
-        for (char c : s.toCharArray()) { // funktsioon, mis teisendab stringi tähemärkide jadaks
-            if (c >= 'A' && c <= 'Z') { // suured t2hem2rgid
+        for (char c : s.toCharArray()) { // Iterate over each character
+            if (c >= 'A' && c <= 'Z') { // Uppercase
                 int newChar = 'A' + ('Z' - c);
                 encrypted.append((char) newChar);
             }
             else if (c >= 'a' && c <= 'z') {
-                int newChar = 'a' + ('z' - c); //v2ikesed t2hem2rgid
-                encrypted.append((char) newChar); //lisab uued symboli kokku
+                int newChar = 'a' + ('z' - c); // Lowercase
+                encrypted.append((char) newChar); // Append transformed char
             }
             else {
                  encrypted.append(c); 
@@ -203,7 +203,7 @@ public class CypherTool {
 
     public static String decryptAtbash(String s) {
 
-        return encryptAtbash(s); //kuna valem on sama, siis l2heb tagasi eelmise koodi juurde
+        return encryptAtbash(s); // Formula is symmetric, so reuse encryption logic
     }
 
     public static String decryptAffine(String s) {

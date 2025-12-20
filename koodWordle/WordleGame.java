@@ -17,10 +17,10 @@ public class WordleGame {
 
     private void run(String[] args) {
         initialize();
-        
+
         int length = 0;
         int argIndex = 0;
-        
+
         // Parse Flags
         if (args.length > argIndex && (args[argIndex].equals("-l") || args[argIndex].equals("--length"))) {
             if (args.length > argIndex + 1) {
@@ -36,19 +36,20 @@ public class WordleGame {
                 return;
             }
         }
-        
+
         // Parse Main Args (Remaining)
         String[] remainingArgs = new String[args.length - argIndex];
         System.arraycopy(args, argIndex, remainingArgs, 0, remainingArgs.length);
-        
+
         if (!validateArgs(remainingArgs)) {
             return;
         }
-        
+
         // If length not provided via flag, ask for it
         if (length == 0) {
             length = promptLength();
-            if (length == 0) return; // EOF
+            if (length == 0)
+                return; // EOF
         }
 
         // Initial Selection
@@ -57,57 +58,57 @@ public class WordleGame {
             // Provided via CLI
             wordSelected = setupInitialWord(remainingArgs, length);
             if (!wordSelected) {
-                 System.out.println("Failed to setup game with length " + length);
-                 return;
+                System.out.println("Failed to setup game with length " + length);
+                return;
             }
         } else {
             // Interactive
             wordSelected = selectNextWord(length);
-            if (!wordSelected) return; // EOF
+            if (!wordSelected)
+                return; // EOF
         }
-        
+
         String username = promptUsername();
         if (username == null) {
             return; // EOF
         }
-        
+
         // Game Loop
         while (true) {
             UserStats stats = playerStats.loadStats(username);
             GameEngine engine = new GameEngine(scanner, wordleDB);
-            
+
             if (!engine.play()) {
                 return; // EOF or exit during game
             }
-            
+
             engine.updateStats(stats);
             playerStats.saveStats(stats);
             promptAndShowStats(stats);
-            
+
             if (!askPlayAgain()) {
                 break;
             }
-            
+
             // For replay, ask length again
             length = promptLength();
-            if (length == 0) break;
-            
+            if (length == 0)
+                break;
+
             if (!selectNextWord(length)) {
                 break; // EOF or exit during selection
             }
         }
-        
+
         waitForExit();
     }
-    
-    // ... promptLength method ...
 
     private boolean validateArgs(String[] args) {
         if (args.length > 1) {
             System.out.println("Too many arguments. Provide at most one (index or 'random').");
             return false;
         }
-        
+
         if (args.length == 1) {
             if (args[0].equalsIgnoreCase("random")) {
                 return true;
@@ -119,25 +120,26 @@ public class WordleGame {
                 return false;
             }
         }
-        
+
         return true;
     }
 
     private int promptLength() {
         while (true) {
             System.out.print("Enter word length (e.g. 5): ");
-            if (!scanner.hasNextLine()) return 0;
-            
+            if (!scanner.hasNextLine())
+                return 0;
+
             String input = scanner.nextLine().trim();
             try {
                 int len = Integer.parseInt(input);
                 if (len < 1) { // Basic sanity check
-                     System.out.println("Invalid length.");
-                     continue;
+                    System.out.println("Invalid length.");
+                    continue;
                 }
                 return len;
             } catch (NumberFormatException e) {
-                 System.out.println("Invalid input. Please enter a number.");
+                System.out.println("Invalid input. Please enter a number.");
             }
         }
     }
@@ -146,7 +148,8 @@ public class WordleGame {
         int wordIndex;
         if (args.length == 1 && args[0].equalsIgnoreCase("random")) {
             wordIndex = getRandomIndex(length);
-            if (wordIndex == -1) return false; // Error printed in getRandomIndex
+            if (wordIndex == -1)
+                return false; // Error printed in getRandomIndex
             System.out.println("Random mode selected. Word #" + wordIndex);
         } else {
             wordIndex = Integer.parseInt(args[0]);
@@ -166,14 +169,15 @@ public class WordleGame {
     private boolean askPlayAgain() {
         while (true) {
             System.out.print("Play again? (yes/no): ");
-            if (!scanner.hasNextLine()) return false;
-            
+            if (!scanner.hasNextLine())
+                return false;
+
             String input = scanner.nextLine().trim().toLowerCase();
-            
+
             if (input.equals("yes") || input.equals("y")) {
                 return true;
-            } else if (input.equals("no") || input.equals("n") || 
-                       input.equals("exit") || input.equals("e") || input.isEmpty()) {
+            } else if (input.equals("no") || input.equals("n") ||
+                    input.equals("exit") || input.equals("e") || input.isEmpty()) {
                 return false;
             } else {
                 System.out.println("Invalid input. Please enter 'yes' or 'no'.");
@@ -184,15 +188,16 @@ public class WordleGame {
     private boolean selectNextWord(int length) {
         while (true) {
             System.out.print("Enter word index or 'random': ");
-            if (!scanner.hasNextLine()) return false;
-            
+            if (!scanner.hasNextLine())
+                return false;
+
             String input = scanner.nextLine().trim();
             int wordIndex;
-            
+
             if (input.equalsIgnoreCase("random")) {
                 wordIndex = getRandomIndex(length);
                 if (wordIndex == -1) {
-                     return false; 
+                    return false;
                 }
                 System.out.println("Random mode selected. Word #" + wordIndex);
             } else {
@@ -203,7 +208,7 @@ public class WordleGame {
                     continue;
                 }
             }
-            
+
             if (wordleDB.fetchSecretWord(wordIndex, length)) {
                 return true;
             }
@@ -211,25 +216,22 @@ public class WordleGame {
         }
     }
 
-
     private void initialize() {
         scanner = new Scanner(System.in);
         wordleDB = new WordleDB();
         playerStats = new PlayerStats();
     }
 
-
-
     private String promptUsername() {
         while (true) {
             System.out.print("Enter your username: ");
-            
+
             if (!scanner.hasNextLine()) {
                 return null;
             }
-            
+
             String username = scanner.nextLine().trim();
-            
+
             if (!username.isEmpty()) {
                 return username;
             }
@@ -238,13 +240,13 @@ public class WordleGame {
 
     private void promptAndShowStats(UserStats stats) {
         System.out.print("Do you want to see your stats? (yes/no): ");
-        
+
         if (!scanner.hasNextLine()) {
             return;
         }
-        
+
         String response = scanner.nextLine().trim().toLowerCase();
-        
+
         if (response.equals("yes")) {
             System.out.println("Stats for " + stats.getUsername() + ":");
             System.out.println("Games played: " + stats.getGamesPlayed());
