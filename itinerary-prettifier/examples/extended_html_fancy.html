@@ -1,46 +1,275 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-<meta charset="UTF-8">
-<title>Flight Itinerary - Anywhere Holidays</title>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
-<style>* { box-sizing: border-box; }
-body { font-family: 'Inter', sans-serif; margin: 0; padding: 40px; min-height: 100vh;
-       background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); }
-.container { max-width: 500px; margin: 0 auto; }
-.header { background: rgba(255,255,255,0.95); border-radius: 16px 16px 0 0; padding: 24px; text-align: center;
-          box-shadow: 0 4px 20px rgba(0,0,0,0.2); }
-.header h1 { margin: 0; font-size: 1.5em; color: #333; }
-.header .tagline { color: #666; margin: 8px 0 0; font-size: 0.9em; }
-.flight-card { background: white; margin-top: 2px; box-shadow: 0 4px 20px rgba(0,0,0,0.1); border-radius: 4px; overflow: hidden; }
-.section { background: white; padding: 20px 24px; }
-.section-title { font-weight: 700; color: #764ba2; margin-bottom: 12px; font-size: 0.85em; text-transform: uppercase; }
-.airport { font-size: 1.1em; font-weight: 600; color: #333; }
-.city { color: #1565c0; }
-.address { color: #888; font-size: 0.85em; margin-top: 4px; }
-.arrow { text-align: center; background: white; padding: 8px; font-size: 1.5em; color: #764ba2; }
-.time-section { background: white; padding: 20px 24px; margin-top: 2px; display: flex; justify-content: space-between; align-items: center; box-shadow: 0 4px 20px rgba(0,0,0,0.1); border-radius: 4px; }
-.flight-divider { background: rgba(255,255,255,0.95); padding: 12px; text-align: center; font-size: 1.2em; color: #764ba2; box-shadow: 0 4px 20px rgba(0,0,0,0.1); margin-top: 2px; margin-bottom: 2px; border-top: 1px solid #e0e0e0; border-bottom: 1px solid #e0e0e0; }
-.time-block { text-align: center; }
-.time-label { color: #888; font-size: 0.85em; text-transform: uppercase; margin-bottom: 4px; }
-.time-value { font-size: 1.1em; font-weight: bold; color: #333; }
-.tz { color: #888; font-size: 0.8em; margin-top: 2px; }
-.duration { background: #e7f3ff; color: #764ba2; padding: 8px 16px; border-radius: 20px; font-weight: bold; display: inline-block; }
-.footer { background: rgba(255,255,255,0.95); border-radius: 0 0 16px 16px; padding: 20px; text-align: center;
-          box-shadow: 0 4px 20px rgba(0,0,0,0.2); margin-top: 2px; }
-.wish { font-style: italic; color: #333; margin-bottom: 8px; }
-.branding { color: #666; font-size: 0.85em; }
-.branding a { color: #764ba2; text-decoration: none; font-weight: 600; }
-.total-box { background: rgba(255,255,255,0.95); margin-top: 2px; padding: 16px; text-align: center;
-             box-shadow: 0 4px 20px rgba(0,0,0,0.1); border-radius: 4px; border-top: 1px solid #e0e0e0; }
-.total-label { color: #764ba2; font-size: 0.85em; text-transform: uppercase; font-weight: 700; margin-bottom: 12px; }
-.total-value { font-size: 1.3em; font-weight: 700; color: #333; }
-</style>
+       <meta charset="UTF-8">
+       <title>Flight Itinerary - Anywhere Holidays</title>
+       <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+       <style>
+              * {
+                     box-sizing: border-box;
+              }
+
+              body {
+                     font-family: 'Inter', sans-serif;
+                     margin: 0;
+                     padding: 40px;
+                     min-height: 100vh;
+                     background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+              }
+
+              .container {
+                     max-width: 500px;
+                     margin: 0 auto;
+              }
+
+              .header {
+                     background: rgba(255, 255, 255, 0.95);
+                     border-radius: 16px 16px 0 0;
+                     padding: 24px;
+                     text-align: center;
+                     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+              }
+
+              .header h1 {
+                     margin: 0;
+                     font-size: 1.5em;
+                     color: #333;
+              }
+
+              .header .tagline {
+                     color: #666;
+                     margin: 8px 0 0;
+                     font-size: 0.9em;
+              }
+
+              .flight-card {
+                     background: white;
+                     margin-top: 2px;
+                     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+                     border-radius: 4px;
+                     overflow: hidden;
+              }
+
+              .section {
+                     background: white;
+                     padding: 20px 24px;
+              }
+
+              .section-title {
+                     font-weight: 700;
+                     color: #764ba2;
+                     margin-bottom: 12px;
+                     font-size: 0.85em;
+                     text-transform: uppercase;
+              }
+
+              .airport {
+                     font-size: 1.1em;
+                     font-weight: 600;
+                     color: #333;
+              }
+
+              .city {
+                     color: #1565c0;
+              }
+
+              .address {
+                     color: #888;
+                     font-size: 0.85em;
+                     margin-top: 4px;
+              }
+
+              .arrow {
+                     text-align: center;
+                     background: white;
+                     padding: 8px;
+                     font-size: 1.5em;
+                     color: #764ba2;
+              }
+
+              .time-section {
+                     background: white;
+                     padding: 20px 24px;
+                     margin-top: 2px;
+                     display: flex;
+                     justify-content: space-between;
+                     align-items: center;
+                     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+                     border-radius: 4px;
+              }
+
+              .flight-divider {
+                     background: rgba(255, 255, 255, 0.95);
+                     padding: 12px;
+                     text-align: center;
+                     font-size: 1.2em;
+                     color: #764ba2;
+                     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+                     margin-top: 2px;
+                     margin-bottom: 2px;
+                     border-top: 1px solid #e0e0e0;
+                     border-bottom: 1px solid #e0e0e0;
+              }
+
+              .time-block {
+                     text-align: center;
+              }
+
+              .time-label {
+                     color: #888;
+                     font-size: 0.85em;
+                     text-transform: uppercase;
+                     margin-bottom: 4px;
+              }
+
+              .time-value {
+                     font-size: 1.1em;
+                     font-weight: bold;
+                     color: #333;
+              }
+
+              .tz {
+                     color: #888;
+                     font-size: 0.8em;
+                     margin-top: 2px;
+              }
+
+              .duration {
+                     background: #e7f3ff;
+                     color: #764ba2;
+                     padding: 8px 16px;
+                     border-radius: 20px;
+                     font-weight: bold;
+                     display: inline-block;
+              }
+
+              .footer {
+                     background: rgba(255, 255, 255, 0.95);
+                     border-radius: 0 0 16px 16px;
+                     padding: 20px;
+                     text-align: center;
+                     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+                     margin-top: 2px;
+              }
+
+              .wish {
+                     font-style: italic;
+                     color: #333;
+                     margin-bottom: 8px;
+              }
+
+              .branding {
+                     color: #666;
+                     font-size: 0.85em;
+              }
+
+              .branding a {
+                     color: #764ba2;
+                     text-decoration: none;
+                     font-weight: 600;
+              }
+
+              .total-box {
+                     background: rgba(255, 255, 255, 0.95);
+                     margin-top: 2px;
+                     padding: 16px;
+                     text-align: center;
+                     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+                     border-radius: 4px;
+                     border-top: 1px solid #e0e0e0;
+              }
+
+              .total-label {
+                     color: #764ba2;
+                     font-size: 0.85em;
+                     text-transform: uppercase;
+                     font-weight: 700;
+                     margin-bottom: 12px;
+              }
+
+              .total-value {
+                     font-size: 1.3em;
+                     font-weight: 700;
+                     color: #333;
+              }
+       </style>
 </head>
+
 <body>
-<div class="container">
-<div class="header">
-<h1>✈️ Anywhere ☀️ Holidays ✈️</h1>
-<p class="tagline">Your Flight Details - "Your journey starts here"</p>
-</div>
-<div class='flight-card'><div class='section'><div class='section-title'>🛫 Departure</div><div class='airport'>London Heathrow Airport</div><div class='city'>London 🇬🇧</div><div class='address'>Pentelow Gardens, New Bedfont, Feltham, London Borough of Hounslow, Greater London, England, TW14 9EF</div></div><div class='arrow'>↓</div><div class='section'><div class='section-title'>🛬 Arrival</div><div class='airport'>John F Kennedy International Airport</div><div class='city'>New York 🇺🇸</div><div class='address'>JFK Access Road, Queens, Queens County, 11430</div></div></div><div class='time-section'><div class='time-block'><div class='time-label'>Departure</div><div class='time-value'>24 Dec 2023 08:30</div><div class='tz'>UTC</div></div><div class='time-block'><div class='time-label'>Arrival</div><div class='time-value'>24 Dec 2023 11:30</div><div class='tz'>EST</div></div><div class='time-block'><span class='duration'>8h 00m</span></div></div> <!-- end time section --><div class='flight-divider'>🛫 ✈️ ✈️ ✈️ 🛬</div><div class='flight-card'><div class='section'><div class='section-title'>🛫 Departure</div><div class='airport'>John F Kennedy International Airport</div><div class='city'>New York 🇺🇸</div><div class='address'>JFK Access Road, Queens, Queens County, 11430</div></div><div class='arrow'>↓</div><div class='section'><div class='section-title'>🛬 Arrival</div><div class='airport'>Tokyo Haneda International Airport</div><div class='city'>Ota, Tokyo 🇯🇵</div><div class='address'>Hanedakuko 3-chome, Ota, Tokyo, 144-0041</div></div></div><div class='time-section'><div class='time-block'><div class='time-label'>Departure</div><div class='time-value'>28 Dec 2023 01:00</div><div class='tz'>EST</div></div><div class='time-block'><div class='time-label'>Arrival</div><div class='time-value'>29 Dec 2023 05:00</div><div class='tz'>JST</div></div><div class='time-block'><span class='duration'>14h 00m</span></div></div> <!-- end time section --><div class='total-box'><div class='total-label'>Total Journey Time</div><div class='total-value'><span class='duration'>22h 00m</span></div></div><div class='footer'><p class='wish'>Happy travels! <span style='font-style:normal'>🛫</span></p><p class='branding'>Booked online through <a href='https://www.anywhereholidays.com'>Anywhere Holidays</a></p></div></div></body></html>
+       <div class="container">
+              <div class="header">
+                     <h1>✈️ Anywhere ☀️ Holidays ✈️</h1>
+                     <p class="tagline">Your Flight Details - "Your journey starts here"</p>
+              </div>
+              <div class='flight-card'>
+                     <div class='section'>
+                            <div class='section-title'>🛫 Departure</div>
+                            <div class='airport'>London Heathrow Airport</div>
+                            <div class='city'>London 🇬🇧</div>
+                            <div class='address'>Pentelow Gardens, New Bedfont, Feltham, London Borough of Hounslow,
+                                   Greater London, England, TW14 9EF</div>
+                     </div>
+                     <div class='arrow'>↓</div>
+                     <div class='section'>
+                            <div class='section-title'>🛬 Arrival</div>
+                            <div class='airport'>John F Kennedy International Airport</div>
+                            <div class='city'>New York 🇺🇸</div>
+                            <div class='address'>JFK Access Road, Queens, Queens County, 11430</div>
+                     </div>
+              </div>
+              <div class='time-section'>
+                     <div class='time-block'>
+                            <div class='time-label'>Departure</div>
+                            <div class='time-value'>24 Dec 2023 08:30</div>
+                            <div class='tz'>UTC</div>
+                     </div>
+                     <div class='time-block'>
+                            <div class='time-label'>Arrival</div>
+                            <div class='time-value'>24 Dec 2023 11:30</div>
+                            <div class='tz'>EST</div>
+                     </div>
+                     <div class='time-block'><span class='duration'>8h 00m</span></div>
+              </div> <!-- end time section -->
+              <div class='flight-divider'>🛫 ✈️ ✈️ ✈️ 🛬</div>
+              <div class='flight-card'>
+                     <div class='section'>
+                            <div class='section-title'>🛫 Departure</div>
+                            <div class='airport'>John F Kennedy International Airport</div>
+                            <div class='city'>New York 🇺🇸</div>
+                            <div class='address'>JFK Access Road, Queens, Queens County, 11430</div>
+                     </div>
+                     <div class='arrow'>↓</div>
+                     <div class='section'>
+                            <div class='section-title'>🛬 Arrival</div>
+                            <div class='airport'>Tokyo Haneda International Airport</div>
+                            <div class='city'>Ota, Tokyo 🇯🇵</div>
+                            <div class='address'>Hanedakuko 3-chome, Ota, Tokyo, 144-0041</div>
+                     </div>
+              </div>
+              <div class='time-section'>
+                     <div class='time-block'>
+                            <div class='time-label'>Departure</div>
+                            <div class='time-value'>28 Dec 2023 01:00</div>
+                            <div class='tz'>EST</div>
+                     </div>
+                     <div class='time-block'>
+                            <div class='time-label'>Arrival</div>
+                            <div class='time-value'>29 Dec 2023 05:00</div>
+                            <div class='tz'>JST</div>
+                     </div>
+                     <div class='time-block'><span class='duration'>14h 00m</span></div>
+              </div> <!-- end time section -->
+              <div class='total-box'>
+                     <div class='total-label'>Total Journey Time</div>
+                     <div class='total-value'><span class='duration'>22h 00m</span></div>
+              </div>
+              <div class='footer'>
+                     <p class='wish'>Happy travels! <span style='font-style:normal'>🛫</span></p>
+                     <p class='branding'>Booked online through <a href='https://nooremarendaja.kood.tech'>Anywhere
+                                   Holidays</a></p>
+              </div>
+       </div>
+</body>
+
+</html>
