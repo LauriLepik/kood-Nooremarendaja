@@ -13,12 +13,12 @@ Welcome to my collection of projects developed during the **kood/Jõhvi kood/Noo
 - **Key Features**: RESTful endpoints, Complex Relationships (Many-to-Many), Search & Pagination.
 - **Status**: 🚧 Work In Progress (Skeleton Only)
 
-### 2. [Itinerary Prettifier](./itinerary-prettifier/) ✈️ (WIP)
+### 2. [Itinerary Prettifier](./itinerary-prettifier/) ✈️ (Released after 12.01.2026)
 
 *A utility for cleaning up and formatting flight itineraries.*
 
 - **Key Features**: ISO Date/Time formatting, Airport Code cleanup (regex), File I/O.
-- **Status**: 🚧 Work In Progress (Skeleton Only)
+- **Status**: Ready for Code Review. Will be released after submission date.
 
 ### 3. [Green Day Bank](./bankingApp/) 🏦
 
