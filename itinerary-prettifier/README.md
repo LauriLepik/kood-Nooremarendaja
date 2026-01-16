@@ -10,7 +10,7 @@
 - **Unfriendly Dates**: ISO 8601 timestamps (e.g., `2007-04-05T12:30-05:00`) instead of readable dates.
 - **Visual Clutter**: Too much whitespace and system artifacts.
 
-My goal was to automate this cleanup. I decided to go a bit further than the basic requirements to build something that feels like a real production tool.
+My task was to build a tool to automate this cleanup process. However, I went beyond the basic requirements to create a robust, production-ready utility.
 
 ---
 
@@ -70,22 +70,38 @@ The tool uses a mix of online APIs and offline algorithms to get the best of bot
 
 ```mermaid
 graph TD
-    Input -->|Read| Parser[ItineraryParser]
-    Parser -->|Raw Data| Enricher[FlightEnricher]
+    Start([CLI Arguments]) --> Resolver{File Resolver}
+    Resolver -->|Recursive Search| Files[(Input/Output Files)]
+    
+    Files --> Mode{Mode?}
+    
+    %% Base Mode Path
+    Mode -->|Default| Base[ItineraryProcessor]
+    Base -->|Regex| Clean[Text Cleanup]
+    Clean --> Output
+    
+    %% Extended Mode Path
+    Mode -->|"-e"| ExtParser[Object Parser]
+    ExtParser -->|Flight Objects| Enricher[ExtendedProcessor]
     
     subgraph Enrichment Pipeline
-        Enricher -->|Coords| TZ{Timezone Logic}
-        TZ -- Online --> API[Geoapify API]
-        TZ -- Offline --> Local[Geometric Mapper]
-        Enricher -->|City/Address| Nominatim[OSM API]
+        Enricher -->|Coordinates| HybridTZ{Timezone Logic}
+        HybridTZ -- Online (Primary) --> API[Geoapify API]
+        HybridTZ -- Offline (Fallback) --> Poly[Geometric Mapper]
+        
+        Enricher -->|City/Airport| Nominatim[OSM Nominatim API]
+        Enricher -->|Durations| TimeCalc[ZonedDateTime Math]
     end
     
-    Enricher -->|Final Model| FormatFactory
+    Enricher -->|Enriched Model| Factory[FormatFactory]
     
-    FormatFactory -->|"-o htmlf"| HTML[Fancy HTML Generator]
-    FormatFactory -->|"-o md"| MD[Markdown Generator]
+    Factory -->|"-o htmlf"| HTML[Embedded CSS Engine]
+    Factory -->|"-o md"| MD[Markdown Generator]
+    Factory -->|"-o txt"| TXT[Legacy Text Formatter]
     
     HTML --> Output[Final Report]
+    MD --> Output
+    TXT --> Output
 ```
 
 ---
