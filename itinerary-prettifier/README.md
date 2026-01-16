@@ -1,69 +1,151 @@
-# Itinerary Prettifier (WIP) ✈️
+# Itinerary Prettifier ✈️
 
-> **Status**: 🚧 Work In Progress
-> **Deadline**: 11.1.2026 23:59
+> **A CLI tool that cleans up messy flight data and turns it into nice-looking documents.**
 
-A command-line tool designed to transform raw, system-generated flight itineraries into customer-friendly formats. This utility parses text files, converts airport codes (IATA/ICAO) to city names, formats ISO 8601 dates, and cleans up spacing.
+## The Challenge 🛑
 
-## 📋 Project Overview
+**"Anywhere Holidays"**, a new online travel agent, had a problem: their booking system spat out raw, hard-to-read text files meant for backend admins, not customers. These itineraries were full of:
 
-**"Anywhere Holidays"** needs a short-term solution to help back-office administrators. Currently, flight booking systems generate raw text itineraries that are hard to read. This tool automates the "prettifying" process, saving administrators time and ensuring consistent output for customers.
+- **Crypto-codes**: `IATA (#LAX)` and `ICAO (##EGLL)` codes instead of city names.
+- **Unfriendly Dates**: ISO 8601 timestamps (e.g., `2007-04-05T12:30-05:00`) instead of readable dates.
+- **Visual Clutter**: Too much whitespace and system artifacts.
 
-### Functional Requirements
+My goal was to automate this cleanup. I decided to go a bit further than the basic requirements to build something that feels like a real production tool.
 
-- **Input/Output**: Reads from a text file and writes to a new file.
-- **Airport Lookup**: dynamically replaces codes like `#LAX` or `##EGLL` with real airport names using an external CSV.
-- **Date/Time Formatting**: Converts ISO dates (e.g., `D(2007-04-05...)`) into readable formats (e.g., `05 Apr 2007` or `12:30PM`).
-- **Cleanup**: Trims character artifacts and excessive vertical whitespace.
+---
+
+## My Solution: Prettifier NEXT ✨
+
+The assignment just asked for a text cleaner, but I built **"Extended Mode"** to do more: it actually understands the flight data, finds missing info (like timezones), and generates HTML reports.
+
+### Improvements & Key Features
+
+| Feature | Original Requirement | My Implementation |
+|---------|---------------------|-------------------|
+| **Airport Lookup** | Basic CSV matching | **Smart Hybrid**: Uses offline CSV + Online APIs (Nominatim) for full addresses. |
+| **Timezones** | Display raw offset | **Auto-Detection**: Calculates real-time offsets using Offline geometric logic or Online APIs. |
+| **Output** | Text file only | **Multi-Format**: Generates Plain Text, **Markdown**, **HTML**, and **Fancy HTML**. |
+| **Duration Calc** | ❌ No | **Auto-calculated** for every flight segment. |
+| **Date Formatting** | Fixed ISO only | **Customizable** via the `--format` flag. |
+| **Country Flags** | ❌ No | **Auto-Generated** Unicode emojis (🇺🇸 🇬🇧) from country codes. |
+| **Random Wishes** | ❌ No | **Dynamic Branding** with randomized travel-themed messages. |
+| **Diagnostics** | ❌ None | **Rich Telemetry**: Verbose mode (`-v`) shows API calls, stats, and warnings. |
+| **Usability** | Explicit paths required | **Smart Crawling**: Auto-finds files in project subdirectories. |
+| **UX** | Silent execution | **Rich CLI**: ANSI-colored logs and progress feedback. |
+
+---
+
+## Technical Highlights 💡
+
+### 1. Dual-Mode Architecture (Requirements vs. Extras) 🏎️
+
+To meet the curriculum requirements while still building the tool I wanted to make, I implemented two distinct engines:
+
+- **Base Mode**: A simple, dependency-free implementation that follows the project rules exactly (Text output, Regex processing).
+- **Extended Mode**: The "Showcase" (`-e` flag) where I added the advanced engineering: Object-Oriented design, API integration, and HTML reporting.
+
+### 2. Resilient "Hybrid" Logic 🧠
+
+The tool uses a mix of online APIs and offline algorithms to get the best of both worlds:
+
+- **Intelligent Fallbacks**: It tries to get live data from APIs (Nominatim/Geoapify) first, but automatically switches to local algorithms if the internet is down (or you're on a plane).
+- **Geometric Timezone Mapper**: I integrated [LatLongToTimezone](https://github.com/drtimcooper/LatLongToTimezone) by **Tim Cooper**. This 26k+ line decision tree (`TimezoneMapper.java`) uses Point-in-Polygon algorithms to detect timezones without any network requests.
+- **Recursive File Crawling**: `FileResolver.java` implements a custom recursive walker that hunts for files up to 5 levels deep, so you can just type `input` instead of the full path `./data/2023/jan/input.txt`.
+
+### 3. Advanced Data Engineering 🔧
+
+- **Dynamic CSV Parsing**: `AirportLookup.java` actually reads the header row to find column indices, so it won't break if the source CSV changes its column order.
+- **Embedded CSS Engine**: `HtmlFancyFormatter` uses Java Text Blocks to embed a full responsive design system (CSS Grid/Flexbox), so the HTML reports look great and are self-contained files.
+- **Unicode Magic**: `CountryFlags.java` programmatically converts ISO country codes (e.g., "US") into emoji flag sequences (🇺🇸) using character code point math.
+- **Time-Aware Duration**: `Flight.java` calculates accurate flight durations using `java.time.Duration` and `ZonedDateTime`, correctly interpreting ISO timestamps across different timezones.
+
+### 4. Interactive Console UX 🎨
+
+- **Legacy Terminal Support**: `TextFormatter.java` includes regex logic to strip emojis/Unicode when generating plain text output, ensuring compatibility with older non-UTF8 terminals.
+- **Human-Readable Timezones**: A custom `TimezoneAbbreviations` map converts raw offsets (e.g., `+02:00`) into familiar codes (e.g., `EET`, `EST`) for better readability.
+- **ANSI Color System**: `ConsoleUtils.java` provides a lightweight, dependency-free wrapper for terminal colors.
+- **Rich Telemetry**: Verbose mode tracks API calls, execution time, and data quality warnings, simulating a production-grade microservice.
+
+### Architecture
+
+```mermaid
+graph TD
+    Input -->|Read| Parser[ItineraryParser]
+    Parser -->|Raw Data| Enricher[FlightEnricher]
+    
+    subgraph Enrichment Pipeline
+        Enricher -->|Coords| TZ{Timezone Logic}
+        TZ -- Online --> API[Geoapify API]
+        TZ -- Offline --> Local[Geometric Mapper]
+        Enricher -->|City/Address| Nominatim[OSM API]
+    end
+    
+    Enricher -->|Final Model| FormatFactory
+    
+    FormatFactory -->|"-o htmlf"| HTML[Fancy HTML Generator]
+    FormatFactory -->|"-o md"| MD[Markdown Generator]
+    
+    HTML --> Output[Final Report]
+```
+
+---
 
 ## 🚀 Usage
 
+### 1. The Simple Way (Base Requirements)
+
+Converts codes to names and formats dates.
+
 ```bash
-java Prettifier.java ./input.txt ./output.txt ./airport-lookup.csv
+java Prettifier ./input.txt ./output.txt ./airport-lookup.csv
 ```
 
-### Arguments
+### 2. The Professional Way (Extended Mode)
 
-1. **Input Path**: Path to the raw itinerary file.
-2. **Output Path**: Destination for the prettified file.
-3. **Airport Lookup**: Path to the CSV database of airport codes.
+Enable `-e` to generate a beautiful HTML report with timezone conversions.
 
-### Flags
-
-- `-h`: Display usage help.
-
-```text
-itinerary usage:
-$ java Prettifier.java ./input.txt ./output.txt ./airport-lookup.csv
+```bash
+# Generate a fancy HTML report with verbose logging
+java Prettifier -e -v -o htmlf --tz Europe/Tallinn input output airport-lookup
 ```
 
-## 🛠 Features (Planned)
+### Options
 
-- [ ] **Airport Code Expansion**:
-  - `#ABC` -> IATA Code (3 letters)
-  - `##ABCD` -> ICAO Code (4 letters)
-  - `*#ABC` -> City Name lookup
-- [ ] **Smart Date Formatting**:
-  - `D(...)` -> `DD-Mmm-YYYY`
-  - `T12(...)` -> `12:30PM (-02:00)`
-  - `T24(...)` -> `12:30 (-02:00)`
-  - `Z` offsets -> `(+00:00)`
-- [ ] **CSV Parsing**: Robust handling of dynamic column orders in `airport-lookup.csv`.
-- [ ] **Error Handling**: Graceful failure messages for missing files or malformed data.
+| Flag | Description |
+|------|-------------|
+| `-e` | Enable **Extended Mode** (Enrichment + Formats). |
+| `-o <type>` | Output format: `txt`, `md`, `html`, `htmlf` (default: `txt`). |
+| `-v` | Enable verbose logging (stats, warnings). |
+| `-p` | Print output to console (stdout) with ANSI colors. |
+| `--tz <zone>` | Convert all times to a specific timezone (e.g., `Europe/London`). |
 
-## 📂 Project Structure
+---
 
-```text
-itinerary-prettifier/
-├── Prettifier.java       # Main entry point (WIP)
-├── airport-lookup.csv    # Data source for airport codes
-├── input.txt             # Sample raw itinerary
-└── README.md             # This documentation
+## 🏗️ Setup & Compilation
+
+**Requirements**: Java 17+
+
+```bash
+# Compile all sources (Base + Extended + Libs)
+javac -encoding UTF-8 -d build *.java lib/*.java extended/*.java extended/format/*.java
+
+# Run
+java -cp build Prettifier -e -o htmlf input output airport-lookup
 ```
 
-## 📝 Resources
+## What I Learned 🧠
 
-- [Airport Codes CSV Details - Provided by //kood](https://kood.tech) (Mock link based on requirements)
+- **Systems Thinking**: Designing a "Dual-Mode" architecture taught me how to balance conflicting requirements: speed (Regex) vs. complexity (Object Model).
+- **The "Real World" is Messy**: Handling raw ISO timestamps and dirty data inputs reinforced the importance of writing defensive code that fails gracefully.
+- **Offline Constraints**: Solving the timezone problem without API calls forced me to research and implement geometric algorithms (Point-in-Polygon), dramatically improving my algorithmic confidence.
+
+## Potential Future Improvements 🔮
+
+- **PDF Generation**: Adding a library like iText to generate printable board-style boarding passes.
+- **Natural Language Parsing**: Using simple NLP to understand queries like "Show me flights to London next Tuesday".
+- **GUI Wrapper**: Building a simple JavaFX front-end for drag-and-drop usage.
+
+---
 
 ## Creator 👨‍💻
 

@@ -6,19 +6,20 @@ Welcome to my collection of projects developed during the **kood/Jõhvi kood/Noo
 
 *(Projects are listed in reverse chronological order, starting with the most recent)*
 
-### 1. [Movies API](./movies-api/) 🎬 (WIP)
+### 1. [Movies API](./movies-api/) 🎬 (WIP) (Available after 9.02.2026)
 
 *A robust REST API for managing a movie database using **Spring Boot** and **JPA**.*
 
 - **Key Features**: RESTful endpoints, Complex Relationships (Many-to-Many), Search & Pagination.
-- **Status**: 🚧 Work In Progress (Skeleton Only)
+- **Status**: 🚧 Work In Progress (Developing base)
 
-### 2. [Itinerary Prettifier](./itinerary-prettifier/) ✈️ (Released after 12.01.2026)
+### 2. [Itinerary Prettifier](./itinerary-prettifier/) ✈️
 
-*A utility for cleaning up and formatting flight itineraries.*
+*A CLI tool that cleans up messy flight data and turns it into nice-looking documents.*
 
-- **Key Features**: ISO Date/Time formatting, Airport Code cleanup (regex), File I/O.
-- **Status**: Ready for Code Review. Will be released after submission date.
+- **Key Features**: Dual-mode engine (Regex vs. Object Model), Smart File Crawling, and **Resilient Hybrid Logic** (Online APIs + Geometric Fallback).
+- **Tech Stack**: Java (NIO), Embedded CSS Engine (Text Blocks), Point-in-Polygon Algorithms, REST APIs, Unicode Manipulation.
+- **Why it stands out**: It doesn't just format text; it adds missing data. It can find timezones and fix addresses even without an internet connection.
 
 ### 3. [Green Day Bank](./bankingApp/) 🏦
 
