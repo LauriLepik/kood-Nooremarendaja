@@ -11,7 +11,7 @@ Welcome to my collection of projects developed during the **kood/Jõhvi kood/Noo
 *A robust REST API for managing a movie database using **Spring Boot** and **JPA**.*
 
 - **Key Features**: RESTful endpoints, Complex Relationships (Many-to-Many), Search & Pagination.
-- **Status**: 🚧 Work In Progress (Developing base)
+- **Status**: 🚧 Work In Progress (Developing additional features)
 
 ### 2. [Itinerary Prettifier](./itinerary-prettifier/) ✈️
 
